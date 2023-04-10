@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alpha="1"
+    android:background="@drawable/fon4"
+    tools:context=".NewGameFragment">
+
+    <Button
+        android:id="@+id/bNew"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="30dp"
+        android:text="Новая игра" />
+
+    <Button
+        android:id="@+id/bExit"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="320dp"
+        android:layout_marginBottom="250dp"
+        android:text="Выход" />
+
+    <Button
+        android:id="@+id/bContinue"
+        style="@style/ButtonStyle"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="170dp"
+        android:layout_marginBottom="30dp"
+        android:text="Продолжить" />
+
+</FrameLayout>
