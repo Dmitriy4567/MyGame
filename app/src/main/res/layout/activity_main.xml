@@ -22,14 +22,14 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/red">
+        android:background="@color/green">
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="300dp"
-        android:background="@color/green">
+        android:background="@color/red">
 
         <TextView
             android:id="@+id/textView2"
