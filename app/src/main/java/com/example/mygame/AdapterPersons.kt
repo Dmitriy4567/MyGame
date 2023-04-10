@@ -8,14 +8,23 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
+
 class AdapterPersons(private val mList: ArrayList<DataSelectPerson>) : RecyclerView.Adapter<AdapterPersons.ViewHolder>() {
 
-    var onItemClick: ((DataSelectPerson)->Unit)?=null
+    private lateinit var mListener: onItemCLickListener
+
+    interface onItemCLickListener{
+        fun onItemClick(position: Int)
+    }
+    fun setOnItemClickListener(listener:onItemCLickListener){
+        mListener=listener
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.layout_select_person, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view,mListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int ) {
@@ -28,17 +37,13 @@ class AdapterPersons(private val mList: ArrayList<DataSelectPerson>) : RecyclerV
         holder.Intelekt.text = Persons.Intelekt
         holder.opisanie.text = Persons.opisanie
 
-        holder.itemView.setOnClickListener {
-            onItemClick?.invoke(Persons)
-        }
-
     }
 
     override fun getItemCount(): Int {
         return mList.size
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, listener: onItemCLickListener) : RecyclerView.ViewHolder(itemView) {
         val Photo: ImageView = itemView.findViewById(R.id.ivPhotoPersons)
         val name: TextView = itemView.findViewById(R.id.tvName)
         val RazmerRuki: TextView = itemView.findViewById(R.id.tvNumberRazmer)
@@ -46,6 +51,15 @@ class AdapterPersons(private val mList: ArrayList<DataSelectPerson>) : RecyclerV
         val Lovkost: TextView = itemView.findViewById(R.id.tvNumberLovkost)
         val Intelekt: TextView =itemView.findViewById<Button?>(R.id.tvNumberIntelect)
         val opisanie : TextView =itemView.findViewById<Button?>(R.id.tvOpisanie)
+
+        init {
+            itemView.setOnClickListener{
+                listener.onItemClick(adapterPosition)
+
+            }
+
+        }
+
 
     }
 
