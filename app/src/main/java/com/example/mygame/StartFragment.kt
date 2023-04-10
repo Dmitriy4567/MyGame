@@ -51,11 +51,22 @@ class StartFragment : Fragment() {
         adapterPersons = AdapterPersons(spisokArrayList)
         rcPersons.adapter = adapterPersons
 
-        adapterPersons.onItemClick = {
-            val intent = Intent(activity,MainActivity::class.java)
-            intent.putExtra("person",it)
-            startActivity(intent)
-        }
+
+        adapterPersons.setOnItemClickListener(object :AdapterPersons.onItemCLickListener{
+            override fun onItemClick(position: Int) {
+                val intent = Intent(activity,MainActivity::class.java)
+                intent.putExtra("Name",spisokArrayList[position].name)
+                intent.putExtra("PhotoPersons",spisokArrayList[position].Photo)
+                intent.putExtra("NumberSila",spisokArrayList[position].Sila)
+                intent.putExtra("NumberLovkost",spisokArrayList[position].Lovkost)
+                intent.putExtra("NumberIntelect",spisokArrayList[position].Intelekt)
+                intent.putExtra("NumberRazmer",spisokArrayList[position].RazmerRuki)
+                intent.putExtra("Opisanie",spisokArrayList[position].opisanie)
+                startActivity(intent)
+                Toast.makeText(activity, "ты кликнул ${position}", Toast.LENGTH_SHORT).show()
+            }
+
+        })
 
 
     }

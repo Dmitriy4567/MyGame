@@ -32,17 +32,22 @@ class MainActivity : AppCompatActivity() {
         var tvNumberRazmerNav:TextView=header.findViewById(R.id.tvNumberRazmerNav)
         var tvOpisanieNav:TextView=header.findViewById(R.id.tvOpisanieNav)
 
-        val person=intent.getParcelableExtra<DataSelectPerson>("person")
-        userName.text=person?.name
-        person?.Photo?.let { ivPhotoPersonsNav.setImageResource(it) }
-        tvNumberSilaNav.text=person?.Sila
-        tvNumberLovkostNav.text=person?.Lovkost
-        tvNumberIntelectNav.text=person?.Intelekt
-        tvNumberRazmerNav.text=person?.RazmerRuki
-        tvOpisanieNav.text=person?.opisanie
+        val bundle: Bundle? =intent.extras
+        val name= bundle!!.getString("Name")
+        val photoPersons= bundle!!.getInt("PhotoPersons")
+        val numberSila= bundle!!.getString("NumberSila")
+        val numberLovkost= bundle!!.getString("NumberLovkost")
+        val numberIntelect= bundle!!.getString("NumberIntelect")
+        val numberRazmer= bundle!!.getString("NumberRazmer")
+        val opisanie= bundle!!.getString("Opisanie")
 
-
-
+        userName.text=name
+        ivPhotoPersonsNav.setImageResource(photoPersons)
+        tvNumberSilaNav.text=numberSila
+        tvNumberLovkostNav.text=numberLovkost
+        tvNumberIntelectNav.text=numberIntelect
+        tvNumberRazmerNav.text=numberRazmer
+        tvOpisanieNav.text=opisanie
 
         toggle = ActionBarDrawerToggle(this@MainActivity, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
