@@ -63,7 +63,7 @@ class StartFragment : Fragment() {
                 intent.putExtra("NumberRazmer",spisokArrayList[position].RazmerRuki)
                 intent.putExtra("Opisanie",spisokArrayList[position].opisanie)
                 startActivity(intent)
-                //Toast.makeText(activity, "ты кликнул ${position}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "ты кликнул ${position}", Toast.LENGTH_SHORT).show()
             }
 
         })
